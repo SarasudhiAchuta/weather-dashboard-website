@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🌈 Enhanced Weather Dashboard</h1>
+            <p class="subtitle">Real-time weather data with advanced forecasts & detailed insights</p>
+        </div>
+        
+        <div class="search-section">
+            <div class="search-row">
+                <input type="text" id="cityInput" class="search-input" placeholder="Enter city name (e.g., New York, Tokyo, London)" value="Delhi">
+                <button id="searchButton" class="search-button">🔍 Search</button>
+                <button id="locationButton" class="location-button">📍 Use My Location</button>
+            </div>
+            
+            <div class="units-toggle">
+                <button class="unit-btn active" data-unit="celsius">°C</button>
+                <button class="unit-btn" data-unit="fahrenheit">°F</button>
+            </div>
+            
+            <div class="quick-cities">
+                <span class="city-chip" onclick="searchCity('New York')">🗽 New York</span>
+                <span class="city-chip" onclick="searchCity('London')">🇬🇧 London</span>
+                <span class="city-chip" onclick="searchCity('Tokyo')">🗾 Tokyo</span>
+                <span class="city-chip" onclick="searchCity('Paris')">🇫🇷 Paris</span>
+                <span class="city-chip" onclick="searchCity('Sydney')">🇦🇺 Sydney</span>
+                <span class="city-chip" onclick="searchCity('Mumbai')">🇮🇳 Mumbai</span>
+                <span class="city-chip" onclick="searchCity('Dubai')">🇦🇪 Dubai</span>
+            </div>
+        </div>
+        
+        <div id="errorMessage" class="error-message hidden"></div>
+        <div id="successMessage" class="success-message hidden"></div>
+        
+        <div id="loadingSection" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Loading weather data...</p>
+        </div>
+        
+        <div id="weatherSection" class="weather-grid hidden">
+            <div class="main-weather-card">
+                <h2 id="cityName" class="city-name"></h2>
+                <div id="weatherIcon" class="weather-icon"></div>
+                <div id="mainTemp" class="main-temp"></div>
+                <div id="weatherDesc" class="weather-desc"></div>
+                <div class="weather-stats">
+                    <div class="stat-item">
+                        <span id="feelsLike" class="stat-value"></span>
+                        <span class="stat-label">Feels Like</span>
+                    </div>
+                    <div class="stat-item">
+                        <span id="windSpeed" class="stat-value"></span>
+                        <span class="stat-label">💨 Wind Speed</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="weather-details-card">
+                <h3 class="details-title">📊 Weather Details</h3>
+                <div class="detail-row">
+                    <span class="detail-label">💧 Humidity</span>
+                    <span id="humidity" class="detail-value"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">👁️ Visibility</span>
+                    <span id="visibility" class="detail-value"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">🌡️ Pressure</span>
+                    <span id="pressure" class="detail-value"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">☀️ UV Index</span>
+                    <span id="uvIndex" class="detail-value"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">🌅 Sunrise</span>
+                    <span id="sunrise" class="detail-value"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">🌇 Sunset</span>
+                    <span id="sunset" class="detail-value"></span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="forecastSection" class="forecast-section hidden">
+            <h3 class="forecast-title">📈 Weather Forecast</h3>
+            <div class="forecast-tabs">
+                <button class="forecast-tab active" data-type="hourly">24 Hours</button>
+                <button class="forecast-tab" data-type="daily">7 Days</button>
+            </div>
+            <div id="forecastGrid" class="forecast-grid"></div>
+        </div>
+        
+        <div class="footer">
+            Powered by Open-Meteo API • Enhanced with advanced features • Real-time global weather data
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
